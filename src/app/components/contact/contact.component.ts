@@ -18,7 +18,7 @@ import { EmailService } from '../../services/email.service';
         <div class="flex-1 p-2">
               <img src="assets/img/contact/image.svg" class="w-full" style="max-height: 500px;">
         </div>
-        <div class="flex-1 ml-6">
+        <div class="flex-1 md:mr-6">
             <div class="text-center pb-4 pt-4 md:pt-0">
               Маєте питання щодо оренди будівельної техніки або потребуєте професійної поради? Заповніть форму нижче, і наші експерти зв’яжуться з вами найближчим часом. Ми допоможемо вам обрати найкраще рішення для вашого проєкту.
             </div>
@@ -65,6 +65,7 @@ import { EmailService } from '../../services/email.service';
                     type="text"
                     id="message"
                     name="message"
+                    placeholder="З чим допомогти?"
                     [(ngModel)]="emailData.message"
                     #message="ngModel"
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/50"

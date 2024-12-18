@@ -5,6 +5,7 @@ import { HeaderComponent } from './app/components/header/header.component';
 import { HeroComponent } from './app/components/hero/hero.component';
 import { FeaturesComponent } from './app/components/features/features.component';
 import { ContactComponent } from './app/components/contact/contact.component';
+import { FooterComponent } from "./app/components/footer/footer.component";
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,9 @@ import { ContactComponent } from './app/components/contact/contact.component';
     HeaderComponent,
     HeroComponent,
     FeaturesComponent,
-    ContactComponent
-  ],
+    ContactComponent,
+    FooterComponent
+],
   template: `
     <app-header />
     <main>
@@ -22,6 +24,7 @@ import { ContactComponent } from './app/components/contact/contact.component';
       <app-features />
       <app-contact />
     </main>
+    <app-footer />
   `
 })
 export class App {}
