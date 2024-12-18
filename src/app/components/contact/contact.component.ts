@@ -14,11 +14,11 @@ import { EmailService } from '../../services/email.service';
         <p class="font-bold text-xl mb-2">Зв’яжіться з нами</p>
         <p>Ми завжди раді допомогти вам! Якщо у вас є питання або ви хочете дізнатися більше про наші послуги, будь ласка, зв’яжіться з нами за наведеними нижче контактами. Наші фахівці готові надати вам всю необхідну інформацію та підтримку.</p>
       </div>
-      <div class="flex flex-col md:flex-row items-center mt-10">
-        <div class="flex-1 p-2">
-              <img src="assets/img/contact/image.svg" class="w-full" style="max-height: 500px;">
+      <div class="flex flex-col md:flex-row mt-10">
+        <div class="flex-1 p-2 md:pl-0">
+              <img src="assets/img/contact/image.svg" style="max-height: 600px;">
         </div>
-        <div class="flex-1 md:mr-6">
+        <div class="flex-1 md:mr-6 flex flex-col justify-center">
             <div class="text-center pb-4 pt-4 md:pt-0">
               Маєте питання щодо оренди будівельної техніки або потребуєте професійної поради? Заповніть форму нижче, і наші експерти зв’яжуться з вами найближчим часом. Ми допоможемо вам обрати найкраще рішення для вашого проєкту.
             </div>
