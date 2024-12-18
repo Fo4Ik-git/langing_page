@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-features',
   standalone: true,
   template: `
-    <section class="flex justify-center bg-pink-100">
+    <section id="features" class="flex justify-center bg-pink-100">
       <div class="flex flex-col md:flex-row w-full">
         <div class="flex-1 p-2 relative">
           <img src="assets/img/features1/img.svg" class="w-full" style="max-height: 500px;">

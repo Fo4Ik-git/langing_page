@@ -67,14 +67,14 @@ import { initFlowbite } from "flowbite";
               </li>
               <li>
                 <a
-                  href="#about"
+                  href="#features2"
                   class="block py-2 pr-4 pl-3 text-white hover:text-primary rounded lg:bg-transparent lg:p-0 dark:text-gray-400 dark:hover:text-white">
                   Асфальтні роботи
                 </a>
               </li>
               <li>
                 <a
-                  href="#contact"
+                  href="#features3"
                   class="block py-2 pr-4 pl-3 text-white hover:text-primary rounded lg:bg-transparent lg:p-0 dark:text-gray-400 dark:hover:text-white">
                   Оренда техніки
                   </a>
