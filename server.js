@@ -14,11 +14,18 @@ app.use((req, res, next) => {
     next();
 });
 
-app.post('/contact', (req, res) => {
+app.post('/api/contact', (req, res) => {
     const data = req.body;
     console.log(data);
     res.send(data);
 });
+
+app.use(express.static('dist/demo'));
+
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/dist/demo/browser/index.html');
+});
+
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
