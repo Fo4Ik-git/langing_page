@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { EmailMessage } from '../../interfaces/email.interface';
-import { EmailService } from '../../services/email.service';
+import { ContactMessage } from '../../interfaces/contact.interface';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -80,7 +80,7 @@ import { EmailService } from '../../services/email.service';
                   {{ isSubmitting ? 'Відправляємо...' : 'Надіслати' }}
                 </button>
     
-                <div *ngIf="submitStatus" class=" mt-4 p-4 rounded-lg" [ngClass]="submitStatus.success ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
+                <div *ngIf="submitStatus" class="mt-4 p-4 rounded-lg max-w-lg mx-auto" [ngClass]="submitStatus.success ? ' text-green-700' : 'text-red'">
                   {{ submitStatus.message }}
                 </div>
               </form>
@@ -91,7 +91,7 @@ import { EmailService } from '../../services/email.service';
   `
 })
 export class ContactComponent {
-  emailData: EmailMessage = {
+  emailData: ContactMessage = {
     name: '',
     phone: '',
     message: ''
@@ -100,7 +100,7 @@ export class ContactComponent {
   isSubmitting = false;
   submitStatus: { success: boolean; message: string } | null = null;
 
-  constructor(private emailService: EmailService) {}
+  constructor(private contactService: ContactService) {}
 
   onSubmit(form: NgForm) {
     if (form.invalid) return;
@@ -108,25 +108,46 @@ export class ContactComponent {
     this.isSubmitting = true;
     this.submitStatus = null;
 
-    this.emailService.sendEmail(this.emailData).subscribe({
-      next: () => {
-        this.submitStatus = {
-          success: true,
-          message: 'Thank you! Your message has been sent successfully.'
-        };
-        form.resetForm();
-        this.emailData = { name: '', phone: '', message: '' };
-      },
-      error: (error) => {
-        this.submitStatus = {
-          success: false,
-          message: 'Sorry, there was an error sending your message. Please try again later.'
-        };
-        console.error('Email sending error:', error);
-      },
-      complete: () => {
-        this.isSubmitting = false;
-      }
+    this.contactService.sendContactToTelegram(this.emailData).subscribe({
+        next: () => {
+            this.submitStatus = {
+                success: true,
+                message: 'Повідомлення доставленно!'
+            };
+            form.resetForm();
+            this.emailData = { name: '', phone: '', message: '' };
+        },
+        error: (error) => {
+            this.submitStatus = {
+                success: false,
+                message: 'Вибачте, сталася помилка. Спробуйте ще раз.'
+            };
+            console.error('Contact sending error:', error);
+        },
+        complete: () => {
+            this.isSubmitting = false;
+        }
     });
+
+    // this.emailService.sendEmail(this.emailData).subscribe({
+    //   next: () => {
+    //     this.submitStatus = {
+    //       success: true,
+    //       message: 'Повідомлення доставленно!'
+    //     };
+    //     form.resetForm();
+    //     this.emailData = { name: '', phone: '', message: '' };
+    //   },
+    //   error: (error) => {
+    //     this.submitStatus = {
+    //       success: false,
+    //       message: 'Вибачте, сталася помилка. Спробуйте ще раз.'
+    //     };
+    //     console.error('Email sending error:', error);
+    //   },
+    //   complete: () => {
+    //     this.isSubmitting = false;
+    //   }
+    // });
   }
 }

@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
             <p>Ми - команда досвідчених фахівців, які завжди готові втілити ваші проєкти в життя. </p>
             <div class="bg-pink-200 rounded-lg py-2 px-4 mt-2 mb-4">
               <p class="font-bold">Наші цінності</p>
-              <p>Всього три слова: Якість, Швидкість, Надійність!</p>
+              <p>Всього три слова: <strong>Якість</strong>, <strong>Швидкість</strong>, <strong>Надійність</strong>!</p>
             </div>
             <p class="font-bold my-2">Наша історія</p>
             <p>Наша історія
