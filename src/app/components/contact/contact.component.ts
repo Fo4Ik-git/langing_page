@@ -123,8 +123,12 @@ export class ContactComponent {
                 message: 'Вибачте, сталася помилка. Спробуйте ще раз.'
             };
             console.error('Contact sending error:', error);
+            setTimeout(() => {
+              this.isSubmitting = false;
+              this.submitStatus = null;
+            }, 3000)
         },
-        complete: () => {
+        complete: () => {123
             this.isSubmitting = false;
         }
     });

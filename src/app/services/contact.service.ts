@@ -7,7 +7,7 @@ import { ContactMessage } from "../interfaces/contact.interface";
 })
 export class ContactService {
 
-  private URL = "http://localhost:3000/api";
+  private URL = "https://server-kappa-six-81.vercel.app/api";
 
   constructor(private http: HttpClient) {}
 

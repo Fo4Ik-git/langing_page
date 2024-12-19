@@ -4,9 +4,7 @@
   "main": "server.js",
   "scripts": {
     "ng": "ng",
-    "start": "npm run frontend",
-    "frontend": "ng serve --host 0.0.0.0",
-    "dev": "npm run frontend",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build"
   },
   "dependencies": {
