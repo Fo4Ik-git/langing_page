@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-features',
+  selector: 'app-features1',
   standalone: true,
   template: `
     <section id="features" class="flex justify-center bg-pink-100">
@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
         </div>
         <div class="flex-1 p-2 flex flex-col justify-center items-center ">
           <div class="text-left px-12">
-            <p class="font-bold my-2">Познайомтесь з нашою командою професіоналів</p>
+            <p class="font-bold text-2xl my-2">Познайомтесь з нашою командою професіоналів</p>
             <p>Ми - команда досвідчених фахівців, які завжди готові втілити ваші проєкти в життя. </p>
             <div class="bg-pink-200 rounded-lg py-2 px-4 mt-2 mb-4">
               <p class="font-bold">Наші цінності</p>
@@ -26,4 +26,4 @@ import { Component } from '@angular/core';
     </section>
   `
 })
-export class FeaturesComponent {}
+export class Features1Component {}

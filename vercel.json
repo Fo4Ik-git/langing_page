@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://server-kappa-six-81.vercel.app/api"
+    }
+  ]
+}

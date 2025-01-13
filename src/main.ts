@@ -3,9 +3,11 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { HeaderComponent } from './app/components/header/header.component';
 import { HeroComponent } from './app/components/hero/hero.component';
-import { FeaturesComponent } from './app/components/features/features.component';
+import { Features1Component } from './app/components/features1/features1.component';
+import { Features2Component } from './app/components/features2/features2.component';
 import { ContactComponent } from './app/components/contact/contact.component';
 import { FooterComponent } from "./app/components/footer/footer.component";
+import {Features3Component} from "./app/components/features3/features3.component";
 
 @Component({
   selector: 'app-root',
@@ -13,15 +15,19 @@ import { FooterComponent } from "./app/components/footer/footer.component";
   imports: [
     HeaderComponent,
     HeroComponent,
-    FeaturesComponent,
+    Features1Component,
+    Features2Component,
     ContactComponent,
-    FooterComponent
-],
+    FooterComponent,
+    Features3Component
+  ],
   template: `
     <app-header />
     <main>
       <app-hero />
-      <app-features />
+      <app-features1 />
+      <app-features2 />
+      <app-features3/>
       <app-contact />
     </main>
     <app-footer />

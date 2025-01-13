@@ -21,6 +21,9 @@ module.exports = {
           200: '#FFCBB1',
         },
       },
+      height: {
+        '505px': '505px',
+      },
     },
   },
   variants: {

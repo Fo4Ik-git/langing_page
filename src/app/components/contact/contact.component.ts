@@ -14,16 +14,17 @@ import { ContactService } from '../../services/contact.service';
         <p class="font-bold text-xl mb-2">Зв’яжіться з нами</p>
         <p>Ми завжди раді допомогти вам! Якщо у вас є питання або ви хочете дізнатися більше про наші послуги, будь ласка, зв’яжіться з нами за наведеними нижче контактами. Наші фахівці готові надати вам всю необхідну інформацію та підтримку.</p>
       </div>
-      <div class="flex flex-col md:flex-row mt-10">
-        <div class="flex-1 p-2 md:pl-0">
-              <img src="assets/img/contact/image.svg" style="max-height: 600px;">
+      <div class="flex flex-col lg:flex-row mt-10">
+        <div class="flex-1 p-2 lg:pl-0 hidden lg:block" style="max-width: 600px;">
+              <img src="assets/img/contact/image.svg" class="object-contain w-full h-auto" >
         </div>
-        <div class="flex-1 md:mr-6 flex flex-col justify-center">
-            <div class="text-center pb-4 pt-4 md:pt-0">
+        <div class="flex-1 flex flex-col justify-center mx-auto">
+            <div class="text-center pb-4 pt-4 md:pt-0 ">
               Маєте питання щодо оренди будівельної техніки або потребуєте професійної поради? Заповніть форму нижче, і наші експерти зв’яжуться з вами найближчим часом. Ми допоможемо вам обрати найкраще рішення для вашого проєкту.
             </div>
-          <div class="max-w-lg mx-auto">
-              <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="space-y-6 bg-white2 p-6 rounded-xl text-black">
+          <div class="max-w-lg min-w-16 mx-auto">
+              <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="space-y-6 bg-white2 p-6 rounded-xl text-black
+               min-w-96" >
                 <div>
                   <label for="name" class="block text-sm font-medium text-gray-700">Як до вас звертатись*</label>
                   <input
@@ -37,7 +38,7 @@ import { ContactService } from '../../services/contact.service';
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/50"
                     [class.border-red-500]="name.invalid && (name.dirty || name.touched)"
                   />
-                  <span class="text-red-500 text-sm" *ngIf="name.invalid && (name.dirty || name.touched)">
+                  <span class="text-red text-sm" *ngIf="name.invalid && (name.dirty || name.touched)">
                     Ім'я обов'язкове
                   </span>
                 </div>
@@ -50,12 +51,15 @@ import { ContactService } from '../../services/contact.service';
                     name="phone"
                     [(ngModel)]="emailData.phone"
                     required
+                    pattern="^\\+?[38]{2}[0-9]{10,12}$"
                     #phone="ngModel"
+                    value="+38"
+                    (input)="onPhoneInput($event)"
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/50"
                     [class.border-red-500]="phone.invalid && (phone.dirty || phone.touched)"
                   />
-                  <span class="text-red-500 text-sm" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
-                    Будь ласка, введіть номер телефону
+                  <span class="text-red text-sm" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                    Будь ласка, введіть дійсний номер телефону
                   </span>
                 </div>
                 
@@ -93,7 +97,7 @@ import { ContactService } from '../../services/contact.service';
 export class ContactComponent {
   emailData: ContactMessage = {
     name: '',
-    phone: '',
+    phone: '+38',
     message: ''
   };
 
@@ -101,6 +105,14 @@ export class ContactComponent {
   submitStatus: { success: boolean; message: string } | null = null;
 
   constructor(private contactService: ContactService) {}
+
+  onPhoneInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (!input.value.startsWith('+38')) {
+      input.value = '+38';
+    }
+    this.emailData.phone = input.value;
+  }
 
   onSubmit(form: NgForm) {
     if (form.invalid) return;
