@@ -6,10 +6,10 @@
 
     <!-- Сетка карточек -->
     <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-items-center"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center"
     >
         <!-- Отображаем первые 4 или все в зависимости от isExpanded -->
-        <ng-container *ngFor="let item of (isExpanded ? equipment : equipment.slice(0, 4))">
+        <ng-container *ngFor="let item of (isExpanded ? equipment : equipment.slice(0, itemsToShow))">
             <div
                     class="bg-white shadow-md rounded-lg p-6 text-center cursor-pointer"
                     (click)="openModal(item)"
@@ -17,7 +17,7 @@
                 <img
                         [src]="item.image"
                         alt="{{ item.name }}"
-                        class="w-full h-40 object-cover rounded-md mb-4"
+                        class="w-full h-80 object-cover rounded-md mb-4"
                 />
                 <h2 class="font-semibold">{{ item.name }}</h2>
                 <p class="text-gray-600">{{ item.model }}</p>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { equipmentData, Equipment } from './data';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 
@@ -23,6 +23,7 @@ export class Features3Component {
   isExpanded = false;
   selectedItem: any = null;
   isModalOpen = false;
+  itemsToShow = 4;
 
   toggleView() {
     this.isExpanded = !this.isExpanded;
@@ -38,5 +39,21 @@ export class Features3Component {
   closeModal() {
     this.isModalOpen = false;
     this.selectedItem = null;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.updateItemsToShow();
+  }
+
+  updateItemsToShow() {
+    const width = window.innerWidth;
+    if (width < 640) {
+      this.itemsToShow = 2;
+    } else if (width < 1024) {
+      this.itemsToShow = 3;
+    } else if (width < 1280) {
+      this.itemsToShow = 4;
+    }
   }
 }
